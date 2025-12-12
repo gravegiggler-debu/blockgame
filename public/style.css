@@ -1,0 +1,10 @@
+body { font-family: system-ui, Arial; background:#0f172a; color:#e6eef8; margin:0; padding:16px; }
+header { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+#controls input { padding:6px 8px; border-radius:6px; border:1px solid #334155; }
+#controls button { margin-left:6px; padding:6px 10px; border-radius:6px; background:#2563eb; color:white; border:none; cursor:pointer; }
+.game-wrap { display:flex; gap:12px; margin-top:12px; }
+canvas { background:#071029; border:1px solid #334155; image-rendering: pixelated; }
+#side { min-width:150px; }
+#next { margin-bottom:10px; }
+.modal { background: rgba(10,12,20,0.95); padding:12px; border-radius:8px; position:fixed; top:10%; left:50%; transform:translateX(-50%); width:320px; max-height:70vh; overflow:auto; }
+#leader-list li { color:#cfe8ff; margin:6px 0; }
