@@ -1,50 +1,15 @@
-body { 
-  font-family: system-ui, Arial; 
-  background: linear-gradient(135deg, #0f172a, #1e293b); 
-  color: #e6eef8; 
-  margin:0; padding:16px; 
-}
+body { font-family: system-ui, Arial; background:#0f172a; color:#e6eef8; margin:0; padding:16px; }
+header { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+#controls input { padding:6px 8px; border-radius:6px; border:1px solid #334155; }
+#controls button { margin-left:6px; padding:6px 10px; border-radius:6px; background:#2563eb; color:white; border:none; cursor:pointer; }
 
-header { 
-  display:flex; justify-content:space-between; align-items:center; gap:12px; 
-}
+.game-wrap { display:flex; gap:12px; margin-top:12px; }
+canvas { background:#071029; border:1px solid #334155; image-rendering: pixelated; }
 
-#controls input { 
-  padding:6px 8px; border-radius:6px; border:1px solid #334155; 
-  background:#1e293b; color:#e6eef8; 
-}
-
-#controls button { 
-  margin-left:6px; padding:6px 10px; border-radius:6px; 
-  background:#2563eb; color:white; border:none; cursor:pointer; 
-  transition: 0.2s; 
-}
-#controls button:hover{ background:#1d4ed8; }
-
-.game-wrap { 
-  display:flex; gap:12px; margin-top:12px; 
-}
-
-canvas { 
-  background:#0f172a; 
-  border:2px solid #2563eb; 
-  image-rendering: pixelated; 
-  box-shadow: 0 0 20px rgba(37,99,235,0.5); 
-}
-
-#side { 
-  min-width:160px; 
-}
-
+#side { min-width:200px; }
 #next { margin-bottom:10px; }
-
-.modal { 
-  background: rgba(10,12,20,0.97); padding:16px; border-radius:12px; 
-  position:fixed; top:10%; left:50%; transform:translateX(-50%); 
-  width:340px; max-height:70vh; overflow:auto; box-shadow: 0 0 20px rgba(0,0,0,0.6);
-}
-
-#leader-list li { color:#cfe8ff; margin:6px 0; font-weight:500; }
+.modal { background: rgba(10,12,20,0.95); padding:12px; border-radius:8px; position:fixed; top:10%; left:50%; transform:translateX(-50%); width:320px; max-height:70vh; overflow:auto; }
+#leader-list li { color:#cfe8ff; margin:6px 0; }
 
 #mobile-controls {
   position: fixed;
@@ -52,24 +17,20 @@ canvas {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 20px;
   z-index: 1000;
 }
 
 #mobile-controls button {
-  background: #2563eb;
+  background: #333;
   color: white;
   border: none;
   padding: 20px 25px;
   font-size: 28px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  transition: 0.2s;
-}
-#mobile-controls button:active{
-  background:#1d4ed8; transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
-@media (min-width: 900px){
-  #mobile-controls{ display: none; }
+@media (min-width: 900px) {
+  #mobile-controls { display: none; }
 }
