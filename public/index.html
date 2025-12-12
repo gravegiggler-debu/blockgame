@@ -1,73 +1,45 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Tetris 1v1</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris 1v1 Online</title>
   <link rel="stylesheet" href="/style.css">
-  <style>
-    /* Mobile Controls */
-    #mobile-controls {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 10px 0;
-      flex-wrap: wrap;
-    }
-    #mobile-controls button {
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
-      border-radius: 10px;
-      background: #222;
-      color: white;
-      border: 2px solid #555;
-      user-select: none;
-    }
-    @media (min-width: 900px) {
-      #mobile-controls {
-        display: none; /* hide mobile controls on desktop */
-      }
-    }
-  </style>
 </head>
 <body>
   <div id="app">
     <header>
-      <h1>Tetris — 1v1</h1>
+      <h1>Tetris 1v1</h1>
       <div id="controls">
-        <input id="username" placeholder="Your name" maxlength="16" />
-        <button id="btn-queue">Find match</button>
-        <button id="btn-leave" style="display:none">Leave queue</button>
+        <input id="username" placeholder="Your name" maxlength="16">
+        <button id="btn-queue">Find Match</button>
+        <button id="btn-leave" style="display:none">Leave Queue</button>
         <button id="btn-leaderboard">Leaderboard</button>
       </div>
     </header>
 
-    <!-- Mobile Controls -->
-    <div id="mobile-controls">
-      <button id="btn-left">◀</button>
-      <button id="btn-rotate">⟳</button>
-      <button id="btn-right">▶</button>
-      <button id="btn-drop">▼</button>
-      <button id="btn-hard">⬇⬇</button>
-    </div>
-
     <main>
       <div class="game-wrap">
-        <canvas id="board" width="200" height="400"></canvas>
+        <canvas id="board" width="300" height="600"></canvas>
         <div id="side">
-          <div id="next">Next</div>
+          <div id="next">Next Piece</div>
           <div id="score">Score: <span id="scoreVal">0</span></div>
           <div id="status">Status: <span id="statustxt">Idle</span></div>
+
           <div id="opponent-board">
             <h3>Opponent</h3>
-            <canvas id="oppBoard" width="100" height="200"></canvas>
+            <canvas id="oppBoard" width="150" height="300"></canvas>
+          </div>
+
+          <div id="online-panel">
+            <h3>Online Players</h3>
+            <ul id="online-list"></ul>
           </div>
         </div>
       </div>
 
       <section id="info">
-        <p>Controls: ← → ↓ rotate: X / Z / Up</p>
+        <p>Controls: ← → ↓ / X,Z / Space for Hard Drop</p>
       </section>
 
       <section id="leaderboard" class="modal" style="display:none;">
@@ -75,34 +47,18 @@
         <ol id="leader-list"></ol>
         <button id="close-leader">Close</button>
       </section>
+
+      <div id="mobile-controls">
+        <button id="btn-left">◀</button>
+        <button id="btn-rotate">⟳</button>
+        <button id="btn-right">▶</button>
+        <button id="btn-drop">⬇</button>
+      </div>
     </main>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="/game.js"></script>
   <script src="/multiplayer.js"></script>
-
-  <script>
-    // Mobile button handlers
-    const playerGame = window.__game || {}; // your game object
-
-    const mobileMap = {
-      "btn-left": ()=>playerGame.player && playerGame.playerMove?.(-1),
-      "btn-right": ()=>playerGame.player && playerGame.playerMove?.(1),
-      "btn-rotate": ()=>playerGame.player && playerGame.playerRotate?.(1),
-      "btn-drop": ()=>playerGame.player && playerGame.playerDrop?.(),
-      "btn-hard": ()=>playerGame.player && playerGame.hardDrop?.()
-    };
-
-    Object.keys(mobileMap).forEach(id=>{
-      const btn = document.getElementById(id);
-      if(btn){
-        btn.addEventListener('touchstart', e=>{
-          e.preventDefault(); // prevent scroll
-          mobileMap[id]();
-        }, {passive:false});
-      }
-    });
-  </script>
 </body>
 </html>
